@@ -7,7 +7,7 @@ echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bash_profile
 echo 'eval "$(anyenv init -)"' >> ~/.bash_profile
 $SHELL -l
 
-sudo yum install -y gcc openssl-devel readline-devel zlib-devel
+sudo yum install -y gcc openssl-devel readline-devel zlib-devel mariadb-devel
 
 anyenv install rbenv
 
@@ -15,4 +15,11 @@ $SHELL -l
 
 rbenv install 2.4.3
 
-echo finish
+gem install bundler
+
+cd /vagrant
+
+bundle install --without development test
+
+sudo yum install -y mariadb-server
+sudo systemctl start mariadb
