@@ -22,8 +22,10 @@ cd /vagrant
 gem install bundler
 bundle install --without development test
 
-sudo yum install -y mariadb-server
-sudo systemctl start mariadb
+sudo yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+sudo yum install -y mysql-community-server
+sudo mysqld --initialize-insecure --user=mysql
+sudo systemctl start mysqld
 
 echo 'export RAILS_ENV=production' >> ~/.bash_profile
 echo "export SECRET_KEY_BASE=$(bin/rails secret)" >> ~/.bash_profile
