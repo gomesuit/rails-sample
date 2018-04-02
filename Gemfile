@@ -37,7 +37,7 @@ group :test do
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.20'
 end
 
 # Windows環境ではtzinfo-dataというgemを含める必要があります

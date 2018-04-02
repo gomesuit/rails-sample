@@ -6,11 +6,10 @@ preload_app!
 
 rackup      DefaultRackup
 port        ENV['PORT']     || 3000
-environment ENV['RACK_ENV'] || 'development'
+environment ENV['RAILS_ENV'] || 'development'
 
-on_worker_boot do
-  # Worker specific setup for Rails 4.1+
-  # See: https://devcenter.heroku.com/articles/
-  # deploying-rails-applications-with-the-puma-web-server#on-worker-boot
-  ActiveRecord::Base.establish_connection
-end
+plugin :tmp_restart
+
+daemonize true
+stdout_redirect 'log/puma_stdout.log', 'log/puma_stderr.log', true
+pidfile 'tmp/pids/puma.pid'
