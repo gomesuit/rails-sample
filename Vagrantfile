@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure('2') do |config|
-  config.vm.box = 'bento/centos-7.3'
+  config.vm.box = 'mvbcoding/awslinux'
   config.ssh.forward_agent = true
 
   config.vm.define 'server' do |host|
